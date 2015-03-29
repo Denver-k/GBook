@@ -1,8 +1,8 @@
 <?php
-    include_once __DIR__.'\db_settings.inc.php';
-    include_once $_SERVER['DOCUMENT_ROOT'].'/gbook/class/db.class.php';
-    include_once $_SERVER['DOCUMENT_ROOT'].'/gbook/class/validation.class.php';
-    include_once $_SERVER['DOCUMENT_ROOT'].'/gbook/class/pagination.class.php';
+    include_once __DIR__.'/db_settings.inc.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/class/db.class.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/class/validation.class.php';
+    include_once $_SERVER['DOCUMENT_ROOT'].'/class/pagination.class.php';
   //Подключение к БД
   $connection = new DB(HOSTNAME, DBNAME, USERNAME, PASSWORD);
   $num_rows = $connection->get_num_rows();
@@ -21,7 +21,7 @@
     if(!empty($name) and !empty($email) and !empty($comment))
     {
 	$connection -> add($name, $email, $comment);
-	header("Location: http://mylocalsite.ua/gbook/index.php");
+	header("Location: http://gbook.esy.es/index.php");
     }
     //Выборка данных с БД
     $users = $connection ->getAll($pages);
@@ -33,7 +33,7 @@
     if(!empty($del_id))
     {
         $connection ->delete($del_id);
-        header("Location: http://mylocalsite.ua/gbook/index.php");
+        header("Location: http://gbook.esy.es/index.php");
     }
 
   
